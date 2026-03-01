@@ -31,9 +31,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      		instance    	title       tags mask     isfloating   monitor */
-	{ "qutebrowser",  	NULL,       	NULL,       1 << 1,       0,           -1 },
-	{ "Firefox",  		NULL,       	NULL,       1 << 2,       0,           -1 },
+	/* class      instance    title       tags mask     isfloating   monitor */
+	{ "qutebrowser",  NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 2,       0,           -1 },
 };
 
 /* layout(s) */
@@ -48,10 +48,9 @@ static const int refreshrate = 120;  /* refresh rate (per second) for client mov
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[@]",      spiral },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[]=",      tile },    /* first entry is default */
 	{ "[M]",      monocle },
-	{ "[]=",      tile },
+	{ "[@]",      spiral },
 	{ "[\\]",     dwindle },
 	{ "H[]",      deck },
 	{ "TTT",      bstack },
@@ -62,6 +61,7 @@ static const Layout layouts[] = {
 	{ ":::",      gaplessgrid },
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
+	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
 
@@ -84,12 +84,11 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-l" , "5" , "-p", "run > " , "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *powercmd[]  = { "/home/ian/Scripts/sys-script.sh", NULL };
-static const char *launchcmd[]  = { "j4-dmenu-desktop", "--no-generic" ,"--dmenu", "dmenu -l 5 -p \"run > \"" , NULL };
 
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,  spawn,          {.v = launchcmd } },
+	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY, 	                XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY, 	                XK_p,	   spawn,          {.v = powercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
