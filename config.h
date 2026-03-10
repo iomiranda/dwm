@@ -81,7 +81,6 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-l" , "5" , "-p", "run > " , "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *powercmd[]  = { "/home/ian/Scripts/sys-script.sh", NULL };
-static const char *exitcmd[]  = { "/home/ian/Scripts/exit-dwm.sh", NULL };
 static const char *launchcmd[]  = { "j4-dmenu-desktop", "--no-generic" ,"--dmenu", "dmenu -l 5 -p \"run > \"" , NULL };
 
 
