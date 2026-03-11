@@ -80,6 +80,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-l" , "5" , "-p", "run > " , "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *lockcmd[]  = { "slock", NULL };
 static const char *powercmd[]  = { "/home/ian/Scripts/sys-script.sh", NULL };
 static const char *launchcmd[]  = { "j4-dmenu-desktop", "--no-generic" ,"--dmenu", "dmenu -l 5 -p \"run > \"" , NULL };
 
@@ -89,6 +90,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_space,  spawn,          {.v = launchcmd } },
 	{ MODKEY, 	                XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY, 	                XK_p,	   spawn,          {.v = powercmd } },
+	{ MODKEY, 	                XK_s,	   spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
